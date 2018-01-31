@@ -1,0 +1,4 @@
+﻿  Main.cpp
+d:\project\c-language\studyc\studyc\main.cpp(53): warning C4018: '<': signed/unsigned mismatch
+  StudyC.vcxproj -> D:\Project\C-Language\StudyC\Debug\StudyC.exe
+  StudyC.vcxproj -> D:\Project\C-Language\StudyC\Debug\StudyC.pdb (Partial PDB)

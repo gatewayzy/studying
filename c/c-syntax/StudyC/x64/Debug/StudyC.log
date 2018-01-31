@@ -1,0 +1,37 @@
+﻿  TestSizeof.cpp
+c:\project\c-language\studyc\studyc\testsizeof.cpp(13): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'std::size_t'
+  c:\project\c-language\studyc\studyc\testsizeof.cpp(13): note: consider using '%zd' in the format string
+c:\project\c-language\studyc\studyc\testsizeof.cpp(14): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'std::size_t'
+  c:\project\c-language\studyc\studyc\testsizeof.cpp(14): note: consider using '%zd' in the format string
+c:\project\c-language\studyc\studyc\testsizeof.cpp(15): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'std::size_t'
+  c:\project\c-language\studyc\studyc\testsizeof.cpp(15): note: consider using '%zd' in the format string
+c:\project\c-language\studyc\studyc\testsizeof.cpp(16): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'std::size_t'
+  c:\project\c-language\studyc\studyc\testsizeof.cpp(16): note: consider using '%zd' in the format string
+c:\project\c-language\studyc\studyc\testsizeof.cpp(17): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'std::size_t'
+  c:\project\c-language\studyc\studyc\testsizeof.cpp(17): note: consider using '%zd' in the format string
+c:\project\c-language\studyc\studyc\testsizeof.cpp(23): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'std::size_t'
+  c:\project\c-language\studyc\studyc\testsizeof.cpp(23): note: consider using '%zd' in the format string
+c:\project\c-language\studyc\studyc\testsizeof.cpp(24): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'std::size_t'
+  c:\project\c-language\studyc\studyc\testsizeof.cpp(24): note: consider using '%zd' in the format string
+c:\project\c-language\studyc\studyc\testsizeof.cpp(25): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'std::size_t'
+  c:\project\c-language\studyc\studyc\testsizeof.cpp(25): note: consider using '%zd' in the format string
+c:\project\c-language\studyc\studyc\testsizeof.cpp(26): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'std::size_t'
+  c:\project\c-language\studyc\studyc\testsizeof.cpp(26): note: consider using '%zd' in the format string
+c:\project\c-language\studyc\studyc\testsizeof.cpp(30): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'std::size_t'
+  c:\project\c-language\studyc\studyc\testsizeof.cpp(30): note: consider using '%zd' in the format string
+c:\project\c-language\studyc\studyc\testsizeof.cpp(36): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'std::size_t'
+  c:\project\c-language\studyc\studyc\testsizeof.cpp(36): note: consider using '%zd' in the format string
+c:\project\c-language\studyc\studyc\testsizeof.cpp(37): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'std::size_t'
+  c:\project\c-language\studyc\studyc\testsizeof.cpp(37): note: consider using '%zd' in the format string
+c:\project\c-language\studyc\studyc\testsizeof.cpp(38): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'std::size_t'
+  c:\project\c-language\studyc\studyc\testsizeof.cpp(38): note: consider using '%zd' in the format string
+  Main.cpp
+c:\project\c-language\studyc\studyc\main.cpp(63): warning C4311: 'type cast': pointer truncation from 'double *' to 'int'
+c:\project\c-language\studyc\studyc\main.cpp(63): warning C4302: 'type cast': truncation from 'double *' to 'int'
+c:\project\c-language\studyc\studyc\main.cpp(62): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type '__int64'
+  c:\project\c-language\studyc\studyc\main.cpp(62): note: consider using '%lld' in the format string
+  c:\project\c-language\studyc\studyc\main.cpp(62): note: consider using '%Id' in the format string
+  c:\project\c-language\studyc\studyc\main.cpp(62): note: consider using '%I64d' in the format string
+  Generating Code...
+  StudyC.vcxproj -> C:\Project\C-Language\StudyC\x64\Debug\StudyC.exe
+  StudyC.vcxproj -> C:\Project\C-Language\StudyC\x64\Debug\StudyC.pdb (Partial PDB)

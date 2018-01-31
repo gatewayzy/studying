@@ -1,0 +1,21 @@
+package proxy.myTest;
+
+/**
+ * http://blog.csdn.net/voyage_mh1987/article/details/5755729
+ * <p>
+ * 动态代理
+ * 与静态代理类对照的是动态代理类，动态代理类的字节码在程序运行时由Java反射机制动态生成
+ * 无需程序员手工编写它的源代码。动态代理类不仅简化了编程工作，而且提高了软件系统的可扩展性
+ * 因为Java 反射机制可以生成任意类型的动态代理类。java.lang.reflect 包中的Proxy类和InvocationHandler 接口提供了生成动态代理类的能力。
+ */
+public class TestProxy {
+    public static void main(String[] args) {
+        /**
+         * 1. 生成一个jdk动态代理类
+         * 2. 创建需要代理的代理对象
+         * 3. 用代理类动态创建代理对象并返回给代理对象引用：用反射机制获取代理对象的构造函数，创建一个代理对象
+         * 4. 使用代理对象使用接口方法
+         */
+        MyJdkProxy myJdkProxy = new MyJdkProxy();  // 创建一个jdk代理工厂
+        Student aStudent = new Student();  // 创建需要代理的代理对象：需要继承接口
+        Human hu

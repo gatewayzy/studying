@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+/*body边框*/
+body{
+	width: 80%;
+	height: 1000px;
+	margin: 50px auto auto;
+}
+
+table{
+	border-collapse: collapse;/*合并单元格之间的距离*/
+	border-spacing: 3px;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+.fixed_top{
+	z-index: 999;
+	border: 1px solid black;
+	position: fixed;
+	right: 50px;
+	top: 5%;
+	opacity: 0.8;
+}
+
+.fixed_right{
+	z-index: 999;
+	border: 1px solid black;
+	position: fixed;
+	right: 50px;
+	top: 40%;
+}
+
+.fixed_right li{
+	margin-top: 3px;
+}

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>java-tools</display-name>
+
+	<!-- initParam -->
+	<context-param>
+		<param-name>base</param-name>
+		<param-value>/java-tools</param-value>
+	</context-param>
+	<context-param>
+		<param-name>name</param-name>
+		<param-value>global</param-value>
+	</context-param>
+
+	<!-- listener -->
+	<listener>
+		<listener-class>javaEE.servlet.listener.TestDBListener</listener-class>
+	</listener>
+	<!-- filter -->
+	<!-- 编码过滤器 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>javaEE.servlet.filter.EncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 记录请求过滤器 -->
+	<filter>
+		<filter-name>logFilter</filter-name>
+		<filter-class>javaEE.servlet.filter.LogFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>logFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- javaEE.servlet -->
+	<!-- servlet1 -->
+	<servlet>
+		<servlet-name>nameMyFirstServlet</servlet-name>
+		<servlet-class>javaEE.servlet.MyServlet</servlet-class>
+		<!-- 工程启动的时候调用此servlet，值为调用顺序 -->
+		<!-- <load-on-startup>1</load-on-startup> -->
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>nameMyFirstServlet</servlet-name>
+		<url-pattern>/gotoMyFirstServlet</url-pattern>
+	</servlet-mapping>
+	<!-- servlet2 -->
+	<servlet>
+		<servlet-name>nameMyGenericServlet</servlet-name>
+		<servlet-class>javaEE.servlet.MyGenericServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>nameMyGenericServlet</servlet-name>
+		<url-pattern>/gotoMyGenericServlet</url-pattern>
+	</servlet-mapping>
+	<!-- servlet3 -->
+	<servlet>
+		<servlet-name>nameMyHttpServlet</servlet-name>
+		<servlet-class>javaEE.servlet.MyHttpServlet</servlet-class>
+		<!--<load-on-startup>0</load-on-startup>-->
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>nameMyHttpServlet</servlet-name>
+		<url-pattern>/gotoMyHttpServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- cookie -->
+	<!-- cookie -->
+	<servlet>
+		<servlet-name>createCookie</servlet-name>
+		<servlet-class>javaEE.servlet.cookie.CreateCookie</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>createCookie</servlet-name>
+		<url-pattern>/createCookie</url-pattern>
+	</servlet-mapping>
+	<!-- cookie -->
+	<servlet>
+		<servlet-name>readCookie</servlet-name>
+		<servlet-class>javaEE.servlet.cookie.ReadCookie</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>readCookie</servlet-name>
+		<url-pattern>/readCookie</url-pattern>
+	</servlet-mapping>
+	<!-- cookie -->
+	<servlet>
+		<servlet-name>removeCookie</servlet-name>
+		<servlet-class>javaEE.servlet.cookie.RemoveCookie</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>removeCookie</servlet-name>
+		<url-pattern>/removeCookie</url-pattern>
+	</servlet-mapping>
+
+	<!-- session -->
+	<!-- session 1 -->
+	<servlet>
+		<servlet-name>CreateSession</servlet-name>
+		<servlet-class>javaEE.servlet.session.CreateSession</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateSession</servlet-name>
+		<url-pattern>/CreateSession</url-pattern>
+	</servlet-mapping>
+
+	<!-- servletContext -->
+	<servlet>
+		<servlet-name>CreatServletContext</servlet-name>
+		<servlet-class>javaEE.servlet.servletContext.CreatServletContext</servlet-class>
+		<init-param>
+			<param-name>name</param-name>
+			<param-value>partName</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreatServletContext</servlet-name>
+		<url-pattern>/CreatServletContext</url-pattern>
+	</servlet-mapping>
+	<!-- servletContext2 -->
+	<servlet>
+		<servlet-name>Counter</servlet-name>
+		<servlet-class>javaEE.servlet.servletContext.Counter</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Counter</servlet-name>
+		<url-pattern>/Counter</url-pattern>
+	</servlet-mapping>
+
+	<!-- welcome -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

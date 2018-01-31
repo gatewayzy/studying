@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 该文件用于ORM映射 -->
+<!-- mapping文件需要的dtd -->
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="javaEE.hibernate.domain">
+	<!-- 配置domain对象与表的对应关系 -->
+	<class name="Customer" lazy="false" table="customer">
+		<!-- 配置主键 -->
+		<id name="id" column="id" type="java.lang.Integer">
+			<!-- 主键生成策略hilo，native，increment，sequence... -->
+			<generator class="increment">
+				<!-- <param name="auto_inc">emp_inc</param> -->
+			</generator>
+		</id>
+		<!-- 配置其他属性 -->
+		<property name="userName" type="java.lang.String">
+			<column name="username" not-null="false"></column>
+		</property>
+		<!-- 配置其他属性 -->
+		<property name="passwd" type="java.lang.String">
+			<column name="password" not-null="false"></column>
+		</property>
+	</class>
+</hibernate-mapping>

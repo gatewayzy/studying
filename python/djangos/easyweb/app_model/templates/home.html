@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>app_web home</title>
+</head>
+<body>
+{% load static %}
+<img src="{% static 'images/favicon.ico' %}" alt="找不到图片">
+<hr>
+<h5>include的用法 加入其他模板的内容</h5>
+<div>
+    {# 在模板中包含其他模板内容 #}
+    <p>引用目录模板内容</p>
+    {% include "content.html" %}
+</div>
+<hr>
+
+<div>
+    <h5>模板可以集成，以减少页面的代码重复</h5>
+    {% block myBlock %}
+        <h5>模板可以被继承 这是父模板，下面的block允许子模板修改，block之外不变，<a href="/web/home2">点击访问子页面</a></h5>
+        <p>这是没有被继承时，myBlock这个block的原始内容</p>
+    {% endblock %}
+</div>
+</body>
+</html>

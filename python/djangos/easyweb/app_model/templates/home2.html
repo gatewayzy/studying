@@ -1,0 +1,7 @@
+{# 本页面继承了home.html，只将父类特定block的内容覆盖，减少重复代码 #}
+{% extends "home.html" %}
+<p>子模板页面内容</p>
+{% block myBlock %}
+    <h6>这是子模板页面，该block已被修改，block之外不变，<a href="/web/home">点击访问父页面</a></h6>
+    <h5>已经覆盖了父模板的对应的block</h5>
+{% endblock %}

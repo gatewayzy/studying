@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 配置文件需要的dtd -->
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<!-- 配置与数据库的session会话 -->
+	<session-factory>
+		<!-- 配置数据库参数 -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/javatools</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">1234</property>
+
+		<!-- 配置数据库方言，hibernate自动会根据翻译成sql方言 -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- 显示运行的sql -->
+		<property name="show_sql">true</property>
+		<!-- 配置可以使用getCurrentSession，线程绑定 -->
+		<property name="current_session_context_class">thread</property>
+
+		<!-- 根据映射文件自动创建数据表,create表示每次创建，update为更新，若没有创建 -->
+		<property name="hbm2ddl.auto">update</property>
+		<!-- 配置mapping文件 -->
+		<mapping resource="hibernate/Customer.hbm.xml" />
+
+	</session-factory>
+</hibernate-configuration>
+
