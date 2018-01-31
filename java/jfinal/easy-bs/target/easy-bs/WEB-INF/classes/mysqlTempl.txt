@@ -1,0 +1,8 @@
+url=jdbc:mysql://127.0.0.1:3306/easybs
+driverClassName=com.mysql.jdbc.Driver
+
+/*Oracle Driver Class: oracle.jdbc.driver.OracleDriver*/
+/*JFinal set MySQL Driver Class as default*/
+
+user=root
+password=1234
