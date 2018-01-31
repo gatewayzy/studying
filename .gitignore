@@ -1,8 +1,7 @@
 .*/
-*.iml
-*/.*
-*/.*/
-*/Debug/
-*/target/
-*/target/**
-*/__pycache__/
+**.iml
+**/.*
+**/.*/
+**/Debug/
+**/target/
+**/__pycache__/
