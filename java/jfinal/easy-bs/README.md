@@ -16,7 +16,7 @@ Dependencies
 |:---	|:---	|
 |Maven-3.2.5	|project construction	|
 |JFinal-3.0 |ORM mvc |
-|MySQL-5.6  | Database. Also see: resources/files/db/*.sql|
+|MySQL-5.6  | Database. Also see: resources/db/*.sql|
 |jQuery-pagination.js/css |Pagination front display  |
 
 Run

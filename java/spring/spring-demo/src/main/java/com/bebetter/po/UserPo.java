@@ -1,9 +1,9 @@
 package com.bebetter.po;
 
-public class User {
+public class UserPo {
     private int id;
     private String name;
-    private Role role;
+    private RolePo rolePo;
 
     public int getId() {
         return id;
@@ -21,11 +21,11 @@ public class User {
         this.name = name;
     }
 
-    public Role getRole() {
-        return role;
+    public RolePo getRolePo() {
+        return rolePo;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRolePo(RolePo rolePo) {
+        this.rolePo = rolePo;
     }
 }

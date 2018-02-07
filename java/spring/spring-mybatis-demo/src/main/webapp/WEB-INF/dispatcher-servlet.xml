@@ -7,6 +7,7 @@
        xmlns:task="http://www.springframework.org/schema/task"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/mvc
@@ -20,7 +21,9 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/cache
-       http://www.springframework.org/schema/cache/spring-cache.xsd">
+       http://www.springframework.org/schema/cache/spring-cache.xsd
+       http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring
+       http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd">
 
     <!-- 本文件用于配置路由解析、拦截器等Spring功能。扫描、aop、task等Spring高级特性需添加对应的xmlns和dtd约束并配置 -->
 
@@ -40,7 +43,7 @@
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
     <!-- 启用task扫描注解 -->
-    <task:annotation-driven/>
+    <task:annotation-driven />
 
     <!-- 启用注解驱动，并设置@@ResponseBody格式是 text/plain;charset=UTF-8; 因为默认的是ISO-8859-1 -->
     <mvc:annotation-driven>
@@ -70,4 +73,32 @@
             <bean class="com.bebetter.web.interceptor.InterceptorData"/>
         </mvc:interceptor>
     </mvc:interceptors>
+
+    <!-- 强制使用UTF-8编码处理RESTful请求 -->
+    <bean id="clientHttpRequestFactory" class="org.springframework.http.client.SimpleClientHttpRequestFactory">
+        <property name="connectTimeout" value="5000"/>
+    </bean>
+    <bean class="org.springframework.web.client.RestTemplate">
+        <constructor-arg ref="clientHttpRequestFactory"/>
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.FormHttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                    <property name="supportedMediaTypes" value="application/json;charset=UTF-8">
+                    </property>
+
+                </bean>
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                    <property name="supportedMediaTypes" value="application/json;charset=UTF-8"/>
+
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 服务器异常的返回页面 -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="commonpages/exception"/>
+        <property name="defaultStatusCode" value="500"/>
+    </bean>
 </beans>

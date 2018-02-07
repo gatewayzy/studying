@@ -1,0 +1,50 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- see http://www.mybatis.org/mybatis-3/configuration.html -->
+<mapper namespace="roleDao">
+    <!-- 对本dao使用设置的ehcache默认缓存策略 -->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+    <resultMap id="roleMap" type="com.bebetter.po.RolePo">
+        <id property="id" column="role_id"/>
+        <result property="name" column="role_name"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.bebetter.po.RolePo" useGeneratedKeys="true" keyColumn="role_id">
+        INSERT INTO roles (role_name) VALUES (#{name})
+    </insert>
+
+    <select id="selectAll" resultType="com.bebetter.po.RolePo">
+        SELECT role_id id,role_name name FROM roles WHERE is_active =1
+    </select>
+
+    <select id="selectById" parameterType="java.util.List" resultMap="roleMap">
+        SELECT role_id ,role_name FROM roles
+        WHERE role_id IN
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="selectByName" parameterType="java.util.List" resultMap="roleMap">
+        SELECT role_id ,role_name FROM roles
+        WHERE role_name IN
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <update id="update" parameterType="java.util.HashMap" flushCache="true">
+        UPDATE roles SET
+        role_name=#{name}
+        WHERE role_id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="java.util.List" flushCache="true">
+        DELETE roles where role_id in
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+</mapper>

@@ -2,28 +2,32 @@ package com.bebetter.web.controller;
 
 import com.bebetter.po.RolePo;
 import com.bebetter.po.UserPo;
+import com.bebetter.service.RoleService;
+import com.bebetter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Controller
 public class IndexController {
-    // 已经定义的bean可以使用autowired或者resource等注解调用。常用于同一个类使用同一个bean。
     @Resource
-    private RolePo rolePo1;
-    @Autowired
-    private RolePo rolePo2;
-
-    @Autowired(required = true)
-    private UserPo userPo1;
+    private UserService userService;
+    @Resource
+    private RoleService roleService;
 
     private ModelAndView getData() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("user", userPo1);
-        modelAndView.addObject("role", rolePo1);
+        List<UserPo> userPoList = userService.getAll();
+        if (null == userPoList || userPoList.isEmpty()) {
+            userService.add();
+        }
+        userPoList = userService.getAll();
+        modelAndView.addObject("user", userPoList.get(0));
+        modelAndView.addObject("role", roleService.getByName(userPoList.get(0).getRoleName()));
 
         modelAndView.setViewName("index");
         return modelAndView;
@@ -31,9 +35,7 @@ public class IndexController {
 
     @RequestMapping(value = {"", "/"})
     public String toIndex() {
-        System.out.println(rolePo1.toString());
-        System.out.println(rolePo2.toString());
-        System.out.println(userPo1.toString());
+
         return "index";
     }
 

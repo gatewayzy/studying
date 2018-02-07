@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- see http://www.mybatis.org/mybatis-3/configuration.html -->
+
+<configuration>
+    <mappers>
+        <mapper resource="mybatis/mapper/userDao.xml"/>
+        <mapper resource="mybatis/mapper/roleDao.xml"/>
+    </mappers>
+</configuration>

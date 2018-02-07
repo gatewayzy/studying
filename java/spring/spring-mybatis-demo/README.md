@@ -1,5 +1,5 @@
 # README
-使用IDEA构建基本的Maven+Spring项目。
+使用IDEA构建基本的Maven+Spring+Mybatis项目。
 
 ## 运行
 * 运行环境
@@ -20,10 +20,15 @@
 2. 如果jsp乱码，可以首行设置jsp的pageEncoding。
 3. 如果显示java level为1.5，在pom.xml的build中指定maven-compiler-plugin-1.8。
 
-## Spring的核心
-* Spring的核心主要是AOP和IOC。此外，提供文件资源管理、定时任务、事务管理等高级功能。
-* IOC, inverse of controll，控制反转
-    * 原来的对象散落在代码中，难以管理，Spring可以用context统一管理
-    * 比如xml中分别定义了一个user和role，然后在代码中@Autowired自动调用。
-* AOP 面向切面编程
-    * 有@Around、@Before、@After等方法。
+## 配置Mybatis
+* 配置数据库连接池，使用mybatis管理数据库session，并指定mapper配置文件。see <http://www.mybatis.org/mybatis-3/configuration.html>
+* 编写mapper配置文件，代码中调用session的管理数据库。
+* 配置ehcache缓存，启用ehcache的bean，指定ehcache配置文件。see <http://www.ehcache.org/ehcache.xsd>
+* 编写ehcache配置文件，指定默认缓存策略和HashMap规则，在代码中根据name区分缓存策略。
+
+## Spring事务管理
+* 对数据库连接池使用spring的tx管理，避免手动编写getTransaction以及transaction.commit。
+ 
+## Spring多线程
+* ThreadLocal 虽然共享同一个bean对象，但是使用ThreadLocal避免线程冲突。
+

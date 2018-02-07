@@ -5,15 +5,15 @@
 
     <!-- 本文件用于配置业务相关的bean，包括数据库、插件、业务bean等 -->
 
-    <bean id="aRole" class="com.bebetter.po.Role">
+    <bean id="aRolePo" class="com.bebetter.po.RolePo">
         <constructor-arg index="0" value="11"/>
         <constructor-arg index="1" value="beanRole"/>
     </bean>
 
-    <bean id="aUser" class="com.bebetter.po.User" >
+    <bean id="aUserPo" class="com.bebetter.po.UserPo" >
         <property name="id" value="-1"/>
         <property name="name" value="beanUser"/>
-        <property name="role" ref="aRole"/>
+        <property name="rolePo" ref="aRolePo"/>
     </bean>
 
 

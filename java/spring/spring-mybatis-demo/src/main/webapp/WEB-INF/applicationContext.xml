@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/cache
+       http://www.springframework.org/schema/cache/spring-cache.xsd
+       http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring
+       http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd">
+
+    <!-- 本文件用于配置业务相关的bean，包括数据库、插件、业务bean等 -->
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:db/mysql.properties</value>
+            </list>
+        </property>
+    </bean>
+    <!-- 配置阿里的数据库连接池 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+        <property name="url" value="${mysql.url}"/>
+        <property name="username" value="${mysql.username}"/>
+        <property name="password" value="${mysql.password}"/>
+        <property name="driverClassName" value="${mysql.driverClassName}"/>
+        <property name="maxActive" value="${mysql.maxActive}"/>
+        <property name="initialSize" value="${mysql.initialSize}"/>
+        <property name="maxWait" value="${mysql.maxWait}"/>
+        <property name="minIdle" value="${mysql.minIdle}"/>
+        <property name="maxIdle" value="${mysql.maxIdle}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${mysql.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${mysql.minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${mysql.validationQuery}"/>
+        <property name="testWhileIdle" value="${mysql.testWhileIdle}"/>
+        <property name="testOnBorrow" value="${mysql.testOnBorrow}"/>
+        <property name="testOnReturn" value="${mysql.testOnReturn}"/>
+        <property name="removeAbandoned" value="${mysql.removeAbandoned}"/>
+        <property name="removeAbandonedTimeout" value="${mysql.removeAbandonedTimeout}"/>
+        <property name="logAbandoned" value="${mysql.logAbandoned}"/>
+    </bean>
+
+    <!-- 可以从数据库连接池中获取一个jdbc直接单独使用 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 也可以对数据库连接池进行事务管理（需启用事务tx），并使用mybatis获取session -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 设置事务使用CGLib代理，不使用JDK代理。JDK代理走接口，CGLib走类 -->
+    <tx:annotation-driven proxy-target-class="true"/>
+    <!-- 配置Mybatis，获取数据库session调用对象 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:mybatis/mybatis-mapper.xml"/>
+    </bean>
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+    <!-- 配置Mybatis使用ehcache缓存 -->
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:ehcache/ehcache.xml"/>
+    </bean>
+    <ehcache:annotation-driven/>
+
+
+</beans>

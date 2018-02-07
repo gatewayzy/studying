@@ -1,0 +1,42 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- see http://www.mybatis.org/mybatis-3/configuration.html -->
+<mapper namespace="userDao">
+    <!-- 对本dao使用设置的ehcache默认缓存策略 -->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+    <insert id="insert" parameterType="java.util.HashMap" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO users (user_name
+        <if test="roleName != null">, role_name</if>
+        )VALUES (#{name}
+        <if test="roleName != null">, #{roleName}</if>
+        )
+    </insert>
+
+    <select id="selectAll" resultType="java.util.HashMap">
+        SELECT user_id id,user_name name, role_name roleName FROM users
+    </select>
+
+    <select id="selectById" parameterType="java.util.List" resultType="java.util.HashMap">
+        SELECT user_id id, user_name name FROM users
+        WHERE user_id IN
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <update id="update" parameterType="java.util.HashMap" flushCache="true">
+        UPDATE users SET
+        user_name=#{name},
+        role_name=#{roleName}
+        WHERE role_id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="java.util.List" flushCache="true">
+        DELETE users where user_id in
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+</mapper>

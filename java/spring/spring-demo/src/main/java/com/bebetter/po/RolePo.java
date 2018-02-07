@@ -1,10 +1,10 @@
 package com.bebetter.po;
 
-public class Role {
+public class RolePo {
     private int id;
     private String name;
 
-    public Role(int id, String name) {
+    public RolePo(int id, String name) {
         this.id = id;
         this.name = name;
     }

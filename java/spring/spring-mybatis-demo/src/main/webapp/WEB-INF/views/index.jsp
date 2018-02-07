@@ -13,8 +13,8 @@
 <ul>
     <li>${user.id}</li>
     <li>${user.name}</li>
-    <li>${user.rolePo.id}</li>
-    <li>${user.rolePo.name}</li>
+    <li>${role.id}</li>
+    <li>${role.name}</li>
 </ul>
 </body>
 </html>
