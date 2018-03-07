@@ -1,5 +1,17 @@
-## Spring Boot 
-### 简介
+# Springboot 
+
+## Springboot与微服务
+* Spring的“编码-编译-web容器-启动”，Springboot内置Web容器，可以简化为3步的普通工程形式，用于构建微服务。
+
+## 构建项目结构的过程
+1. 在IDEA中新建工程，勾选Spring initializr，然后next。
+2. 设置项目名称等参数，然后next并按需选取web、sql等项目依赖。
+3. Finish并等待依赖下载完成。可以查看main和test的示例。
+
+## 补充说明
+* Springboot中使用大量的默认配置，比如默认使用Application.java、application.yml（其他格式都行）等等。
+
+## Springboot简介
 * 项目地址：[Github: spring-projects/spring-boot](https://github.com/spring-projects/spring-boot)，以下内容也参考自github。
 * spring boot在Spring生态中的位置属于spring之上，对spring进行了封装和简化。
 * 特点：

@@ -1,0 +1,9 @@
+server:
+  port: 1111
+
+spring:
+    datasource:
+        name: test
+        url: jdbc:mysql://127.0.0.1:3306/studying
+        username: root
+        password: 1234
