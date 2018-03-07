@@ -9,7 +9,7 @@
 3. Finish并等待依赖下载完成。可以查看main和test的示例。
 
 ## 补充说明
-* Springboot中使用大量的默认配置，比如默认使用Application.java、application.yml（其他格式都行）等等。
+* Springboot中使用大量的默认配置，比如默认读取Application.java、application.yml（其他格式都行）等等。
 
 ## Springboot简介
 * 项目地址：[Github: spring-projects/spring-boot](https://github.com/spring-projects/spring-boot)，以下内容也参考自github。

@@ -1,4 +1,4 @@
-package com.bebetter.springbootmybatisdemo;
+package com.bebetter.springbootmvcdemo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +11,7 @@ public class SpringbootMybatisDemoApplicationTests {
 
     @Test
     public void contextLoads() {
-        System.out.println("加载src所有的bean，在这里测试功能。");
+        System.out.println("加载项目中所有的bean");
     }
 
 }

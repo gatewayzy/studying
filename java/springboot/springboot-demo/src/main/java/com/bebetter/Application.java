@@ -16,10 +16,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.Arrays;
 
-/**
- * 运行main()方法启动一个web微服务，可以访问对应的url
- */
-
 @SpringBootApplication  //相当于@Configuration、@EnableAutoConfiguration、@ComponentScan。Sb自动加载本类并有默认设置
 //@ComponentScan("com.bebetter.mybatisdemo")  //扫描包
 @EnableTransactionManagement // 开启事务支持
