@@ -10,6 +10,12 @@
 3. Finish并等待依赖下载完成。可以查看main和test的示例。
 
 ## 发布方式
-* 使用`mvn spring-boot:run`方式发布项目
-* 运行主Application.java
-* 
+* IDEA设置对应的active profile，运行主Application.java
+* 或者maven运行`mvn spring-boot:run -Dspring.profiles.active=prod`方式发布项目
+* 或者maven打包、java运行：`mvn install`、`java -jar -Dspring.profiles.active=prod springboot-mvc-demo.jar`
+
+### 技术架构
+|Name   |description   |
+|:---:   |:---:  |
+|Spring Boot   |Spring Microservice |
+|Thymeleaf   |Template  |

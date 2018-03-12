@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+    <meta name="viewpoint" content="width=device-width, initial-scale=1"/>
+    <link th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<h1>thymeleaf</h1>
+<h2>foreach</h2>
+<ul class="panel-heading">
+    <li th:each="u:${users}">
+        <span th:text="${u.id}"/>
+        <span th:text="${u.name}"/>
+    </li>
+</ul>
+<h2>if</h2>
+<div th:if="${not #lists.isEmpty(users)}">
+    <p th:text="${users[0].id}"> </p>
+    <p th:text="${users[0].name}"> </p>
+</div>
+<h2>access in script</h2>
+<div>
+<button type="button" class="btn btn-default col-4" th:onclick="'getName(\''+${users[0].name}+'\')'">按钮</button>
+</div>
+   <script th:inline="javascript">
+       var user = [[${users}]]
+       alert(user[0].name)
+       
+       function getName(name) {
+           alert('点击得到'+name)
+       }
+   </script>
+
+<script th:src="@{js/jquery-3.2.1.min.js}"/>
+<script th:src="@{bootstrap/js/bootstrap.js}"/>
+</body>
+</html>

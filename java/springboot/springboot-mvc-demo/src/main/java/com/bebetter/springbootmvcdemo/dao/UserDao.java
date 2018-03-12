@@ -3,6 +3,7 @@ package com.bebetter.springbootmvcdemo.dao;
 import com.bebetter.springbootmvcdemo.po.UserPo;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
  */
 
 @Mapper
+@Component  // 可以省略，但是省略会出现错误提示
 public interface UserDao {
 
     @Insert("insert into users(user_name, role_name) values (#{name}, #{roleName})")
