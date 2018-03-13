@@ -9,13 +9,22 @@
 2. 设置项目名称等参数，然后next并按需选取web、sql等项目依赖。
 3. Finish并等待依赖下载完成。可以查看main和test的示例。
 
-## 发布方式
+## 运行方法
 * IDEA设置对应的active profile，运行主Application.java
 * 或者maven运行`mvn spring-boot:run -Dspring.profiles.active=prod`方式发布项目
 * 或者maven打包、java运行：`mvn install`、`java -jar -Dspring.profiles.active=prod springboot-mvc-demo.jar`
 
-### 技术架构
+## 技术架构
+* 使用Mybatis或者JPA(With Hibernate)与Druid进行ORM。
+* 使用thymeleaf渲染页面，使用Spring的REST+JPA获取ajax数据。
+
 |Name   |description   |
 |:---:   |:---:  |
 |Spring Boot   |Spring Microservice |
 |Thymeleaf   |Template  |
+|druid   |阿里数据库连接池 <https://github.com/alibaba/druid>   |
+|mybatis   |ORM   |
+|Spring Data JPA    |Java Persistence API. 默认Hibernate  |
+|Spring Data REST    |RestController  |
+|cache    |默认simple  |
+|transactional    |默认事务支持  |

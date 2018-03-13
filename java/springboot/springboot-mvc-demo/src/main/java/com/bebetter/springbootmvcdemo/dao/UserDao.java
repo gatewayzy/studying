@@ -26,7 +26,10 @@ public interface UserDao {
             "select user_id id, user_name name from users where user_id in " +
             "<foreach collection='list' index='index' item='item' open='(' separator=',' close=')'> #{item} </foreach>" +
             "</script>")
-    List<HashMap<String, Object>> selectById(List<Integer> idList);
+    List<HashMap<String, Object>> selectByIds(List<Integer> idList);
+
+    @Select("select user_id id, user_name name from users where user_id= #{id}")
+    UserPo selectById(int id);
 
     @Results({@Result(property = "id", column = "user_id",jdbcType = JdbcType.INTEGER),
             @Result(property = "name", column = "user_name")})

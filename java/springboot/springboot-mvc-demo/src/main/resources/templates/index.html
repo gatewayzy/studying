@@ -1,11 +1,14 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta content="text/html;charset=UTF-8"/>
     <meta http-equiv="x-ua-compatible" content="IE=edge"/>
     <meta name="viewpoint" content="width=device-width, initial-scale=1"/>
-    <link th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" th:href="@{favicon.ico}">
+    <link th:href="@{bootstrap/css/bootstrap.css}" rel="stylesheet">
+
 </head>
-<body>
+<body class="col-8 center">
 <h1>thymeleaf</h1>
 <h2>foreach</h2>
 <ul class="panel-heading">
@@ -16,23 +19,70 @@
 </ul>
 <h2>if</h2>
 <div th:if="${not #lists.isEmpty(users)}">
-    <p th:text="${users[0].id}"> </p>
-    <p th:text="${users[0].name}"> </p>
+    <p th:text="${users[0].id}"></p>
+    <p th:text="${users[0].name}"></p>
 </div>
 <h2>access in script</h2>
 <div>
-<button type="button" class="btn btn-default col-4" th:onclick="'getName(\''+${users[0].name}+'\')'">按钮</button>
+    <button type="button" class="btn btn-default col-4" th:onclick="'getName(\''+${users[0].name}+'\')'">按钮显示预传入的数据
+    </button>
 </div>
-   <script th:inline="javascript">
-       var user = [[${users}]]
-       alert(user[0].name)
-       
-       function getName(name) {
-           alert('点击得到'+name)
-       }
-   </script>
+<h2>ajax</h2>
+<div>
+    <button type="button" class="btn col-4" th:onclick="'getAjax(\''+${users[0].id}+'\')'">按钮获取ajax数据</button><br/>
+    <input id="data" class="col-4" value="使用GET Ajax获取后台数据"><br/>
+    <input id="data2" class="col-4" value="使用POST Ajax获取后台数据"><br/>
+    <input id="data3" class="col-4" value="使用GET Ajax获取RestController提供的后台JPA数据">
+</div>
+<h2>image</h2>
+<div>
+    <img src="/static/favicon.ico">
+    <img th:src="@{favicon.ico}">
+</div>
 
-<script th:src="@{js/jquery-3.2.1.min.js}"/>
-<script th:src="@{bootstrap/js/bootstrap.js}"/>
+<script th:src="@{js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{bootstrap/js/bootstrap.js}"></script>
+
+<script th:inline="javascript">
+    var user = [[${users}]]
+    alert(user[0].name)
+
+    function getName(name) {
+        alert('点击得到' + name)
+    }
+
+    function getAjax(id) {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "./ajaxget?id=" + id,
+            success: function (data) {
+                $("#data").val(data.id + " : " + data.name)
+            }
+        });
+        $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "./ajaxpost",
+                data: {
+                    "id": id
+                },
+                success: function (data) {
+                    $("#data2").val(data.id + " : " + data.name)
+                }
+            }
+        )
+        $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "./role/1",
+                success: function (data) {
+                    $("#data3").val(data.id + " : " + data.name)
+                }
+            }
+        )
+    }
+</script>
+
 </body>
 </html>

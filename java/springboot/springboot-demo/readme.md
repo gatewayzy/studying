@@ -2,14 +2,25 @@
 
 ## Springboot与微服务
 * Spring的“编码-编译-web容器-启动”，Springboot内置Web容器，可以简化为3步的普通工程形式，用于构建微服务。
+* Springboot中使用大量的默认配置，比如默认读取Application.java、application.yml（其他格式都行）等等。
 
 ## 构建项目结构的过程
 1. 在IDEA中新建工程，勾选Spring initializr，然后next。
 2. 设置项目名称等参数，然后next并按需选取web、sql等项目依赖。
 3. Finish并等待依赖下载完成。可以查看main和test的示例。
 
-## 补充说明
-* Springboot中使用大量的默认配置，比如默认读取Application.java、application.yml（其他格式都行）等等。
+## 运行方法
+* 运行Application.java或者WebApplication.java以发布一个微服务。
+* 运行Junit的@Test方法进行功能测试。
+
+## 技术架构
+* 使用Spring Boot构建微服务。并测试其对Spring的支持。
+* 使用Mybatis+JDBC进行数据访问测试。
+
+|Name   |description   |
+|:---:   |:---:  |
+|Spring Boot   |Spring Boot对**AOP、异步线程/任务、定时任务、Junit、事务管理**的支持   |
+|Mybatis   |ORM   |
 
 ## Springboot简介
 * 项目地址：[Github: spring-projects/spring-boot](https://github.com/spring-projects/spring-boot)，以下内容也参考自github。
@@ -49,4 +60,3 @@
     * [Building a RESTful Web Service with Spring Boot Actuator](http://spring.io/guides/gs/actuator-service/)：创建REST web服务，配置server。
     * [Converting a Spring Boot JAR Application to a WAR](http://spring.io/guides/gs/convert-jar-to-war/)：将应用以war方式运行到web容器。
     
-        

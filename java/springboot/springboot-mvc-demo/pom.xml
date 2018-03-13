@@ -29,6 +29,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
+        <!-- Starter for using Spring Data JPA with Hibernate -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -62,15 +67,29 @@
 
         <!-- 阿里数据库连接线程池 -->
         <!--<dependency>-->
-            <!--<groupId>com.alibaba.druid</groupId>-->
-            <!--<artifactId>druid-wrapper</artifactId>-->
-            <!--<version>0.2.9</version>-->
+        <!--<groupId>com.alibaba.druid</groupId>-->
+        <!--<artifactId>druid-wrapper</artifactId>-->
+        <!--<version>0.2.9</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.1.9</version>
         </dependency>
+
+        <!-- guava 操作工具 -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>24.0-jre</version>
+        </dependency>
+        <!-- json 操作工具 -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+
 
     </dependencies>
 
