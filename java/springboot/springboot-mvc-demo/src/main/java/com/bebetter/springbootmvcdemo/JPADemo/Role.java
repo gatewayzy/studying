@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-// Hibernate默认po与表名一致
+// Hibernate默认po与表名一致，且有大写对应表名的下划线
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
